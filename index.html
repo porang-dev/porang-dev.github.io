@@ -1007,11 +1007,65 @@
                   
         const bubbleDiv = document.createElement('div');
         bubbleDiv.className = 'message-bubble';
-        bubbleDiv.textContent = content;
+        
+        if (isUser) {
+          // User messages displayed as plain text
+          bubbleDiv.textContent = content;
+        } else {
+          // Bot messages parsed as markdown
+          bubbleDiv.innerHTML = this.parseMarkdown(content);
+        }
                   
         messageDiv.appendChild(bubbleDiv);
         this.chatMessages.appendChild(messageDiv);
         this.scrollToBottom();
+      }
+
+      parseMarkdown(text) {
+        // Escape HTML to prevent XSS attacks
+        text = this.escapeHtml(text);
+                
+        // Parse markdown formatting
+        text = text
+            // Bold text: **text** or __text__
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/__(.*?)__/g, '<strong>$1</strong>')
+                    
+            // Italic text: *text* or _text_
+            .replace(/(?<!\*)\*(?!\*)([^*]+)\*(?!\*)/g, '<em>$1</em>')
+            .replace(/(?<!_)_(?!_)([^_]+)_(?!_)/g, '<em>$1</em>')
+                    
+            // Inline code: `code`
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+                    
+            // Strikethrough: ~~text~~
+            .replace(/~~(.*?)~~/g, '<del>$1</del>')
+                    
+            // Line breaks
+            .replace(/\n/g, '<br>')
+                    
+            // Simple bullet points: - item or * item
+            .replace(/^[\-\*]\s+(.+)$/gm, '<li>$1</li>')
+                    
+            // Numbered lists: 1. item
+            .replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>');
+                
+        // Wrap consecutive <li> elements in <ul>
+        text = text.replace(/(<li>.*<\/li>)/s, function(match) {
+            const items = match.match(/<li>.*?<\/li>/g);
+            if (items && items.length > 0) {
+              return '<ul>' + items.join('') + '</ul>';
+            }
+            return match;
+        });
+                
+        return text;
+      }
+
+      escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
       }
 
       showTyping() {

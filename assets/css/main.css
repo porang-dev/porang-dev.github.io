@@ -4183,7 +4183,7 @@ section,
 }
 
 .message.user .message-bubble {
-  background: linear-gradient(135deg, var(--contrast-color) -60%, var(--accent-color) 100%);
+  background: linear-gradient(135deg, var(--contrast-color) -1000%, var(--accent-color) 100%);
   color: white;
   border-bottom-right-radius: 4px;
 }
@@ -4193,6 +4193,46 @@ section,
   color: #333;
   border: 1px solid #e1e8ed;
   border-bottom-left-radius: 4px;
+}
+
+/* Markdown styling for bot messages */
+.message.bot .message-bubble strong {
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.message.bot .message-bubble em {
+  font-style: italic;
+  color: #4a5568;
+}
+
+.message.bot .message-bubble code {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  color: #e53e3e;
+}
+
+.message.bot .message-bubble del {
+  text-decoration: line-through;
+  color: #a0aec0;
+}
+
+.message.bot .message-bubble ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.message.bot .message-bubble li {
+  margin: 4px 0;
+  list-style-type: disc;
+}
+
+.message.bot .message-bubble br {
+  line-height: 1.8;
 }
 
 .typing-indicator {
@@ -4284,7 +4324,7 @@ section,
 .chat-send {
   width: 44px;
   height: 44px;
-  background: linear-gradient(135deg, var(--contrast-color) -60%, var(--accent-color) 100%);
+  background: linear-gradient(135deg, var(--contrast-color) -1000%, var(--accent-color) 100%);
   border: none;
   border-radius: 50%;
   color: white;
