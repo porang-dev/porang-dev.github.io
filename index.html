@@ -972,7 +972,14 @@
           const containerHeight = this.chatContainer.offsetHeight;
           const headerHeight = 80; // approximate header height
           const inputContainerHeight = this.chatInputContainer.offsetHeight;
-          const messagesHeight = containerHeight - headerHeight - inputContainerHeight;
+          
+          // Hitung tinggi typing indicator jika sedang aktif
+          const typingIndicatorHeight = this.typingIndicator.classList.contains('active') 
+            ? this.typingIndicator.offsetHeight + 16 // tambah margin/padding
+            : 0;
+          
+          // Kurangi tinggi messages dengan typing indicator height
+          const messagesHeight = containerHeight - headerHeight - inputContainerHeight - typingIndicatorHeight;
                     
           this.chatMessages.style.height = Math.max(messagesHeight, 200) + 'px';
         }, 10);
@@ -1177,11 +1184,15 @@
 
       showTyping() {
         this.typingIndicator.classList.add('active');
+        // Update messages height ketika typing indicator muncul
+        this.updateMessagesHeight();
         this.scrollToBottom();
       }
 
       hideTyping() {
         this.typingIndicator.classList.remove('active');
+        // Update messages height ketika typing indicator hilang
+        this.updateMessagesHeight();
       }
 
       scrollToBottom() {
