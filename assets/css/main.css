@@ -4235,6 +4235,19 @@ section,
   line-height: 1.8;
 }
 
+/* Typing cursor animation */
+.typing-cursor::after {
+  content: '|';
+  color: var(--accent-color);
+  font-weight: normal;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 .typing-indicator {
   display: none;
   align-items: center;

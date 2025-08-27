@@ -1011,14 +1011,121 @@
         if (isUser) {
           // User messages displayed as plain text
           bubbleDiv.textContent = content;
+          messageDiv.appendChild(bubbleDiv);
+          this.chatMessages.appendChild(messageDiv);
+          this.scrollToBottom();
         } else {
-          // Bot messages parsed as markdown
-          bubbleDiv.innerHTML = this.parseMarkdown(content);
+          // Bot messages with typing effect
+          messageDiv.appendChild(bubbleDiv);
+          this.chatMessages.appendChild(messageDiv);
+          this.scrollToBottom();
+          this.typeMessage(bubbleDiv, content);
         }
                   
         messageDiv.appendChild(bubbleDiv);
         this.chatMessages.appendChild(messageDiv);
         this.scrollToBottom();
+      }
+
+      typeMessage(element, content) {
+        // Parse markdown first to get the final HTML
+        const finalHTML = this.parseMarkdown(content);
+                
+        // Create a temporary element to extract plain text for typing
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = finalHTML;
+        const plainText = tempDiv.textContent || tempDiv.innerText || '';
+                
+        // Clear the element and add typing cursor class
+        element.innerHTML = '';
+        element.classList.add('typing-cursor');
+                
+        let currentIndex = 0;
+        const typingSpeed = 30; // milliseconds per character
+                
+        const typeNextCharacter = () => {
+          if (currentIndex < plainText.length) {
+            // Get current portion of plain text
+            const currentText = plainText.substring(0, currentIndex + 1);
+                        
+            // Create temp element to get corresponding HTML
+            const progress = currentIndex + 1;
+            const htmlProgress = this.getProgressiveHTML(finalHTML, progress);
+                        
+            element.innerHTML = htmlProgress;
+            currentIndex++;
+                        
+            // Continue typing
+            setTimeout(typeNextCharacter, typingSpeed);
+            this.scrollToBottom();
+          } else {
+            // Typing complete, remove cursor and ensure final HTML is correct
+            element.classList.remove('typing-cursor');
+            element.innerHTML = finalHTML;
+            this.scrollToBottom();
+          }
+        };
+                
+        // Start typing after a short delay
+        setTimeout(typeNextCharacter, 100);
+      }
+
+      getProgressiveHTML(fullHTML, targetLength) {
+        // Create temporary element to work with
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = fullHTML;
+                
+        // Get plain text to count characters
+        const fullText = tempDiv.textContent || tempDiv.innerText || '';
+                
+        if (targetLength >= fullText.length) {
+          return fullHTML;
+        }
+                
+        // Calculate ratio of progress
+        const ratio = targetLength / fullText.length;
+                
+        // Simple approach: truncate HTML and try to maintain basic formatting
+        let currentLength = 0;
+        let result = '';
+                
+        const processNode = (node) => {
+          if (currentLength >= targetLength) return false;
+                    
+          if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.textContent;
+            const remainingLength = targetLength - currentLength;
+                        
+            if (text.length <= remainingLength) {
+              result += text;
+              currentLength += text.length;
+            } else {
+              result += text.substring(0, remainingLength);
+              currentLength = targetLength;
+              return false;
+            }
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            const tagName = node.tagName.toLowerCase();
+            const openTag = `<${tagName}>`;
+            const closeTag = `</${tagName}>`;
+                        
+            result += openTag;
+                        
+            for (let child of node.childNodes) {
+              if (!processNode(child)) break;
+            }
+                        
+            result += closeTag;
+          }
+                    
+          return true;
+        };
+                
+        for (let child of tempDiv.childNodes) {
+          if (!processNode(child)) break;
+        }
+                
+        return result || fullHTML.substring(0, targetLength * 2); // Fallback
       }
 
       parseMarkdown(text) {
