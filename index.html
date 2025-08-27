@@ -1071,7 +1071,7 @@
             this.hideTyping();
                       
             // Add bot response
-            const botMessage = data.response || data.message || 'Maaf, saya mengalami kesulitan memproses pertanyaan Anda. Silakan coba lagi.';
+            const botMessage = data.output || data.response || data.message || 'Maaf, saya mengalami kesulitan memproses pertanyaan Anda. Silakan coba lagi.';
             this.addMessage(botMessage, false);
 
         } catch (error) {
