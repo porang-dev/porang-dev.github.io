@@ -836,6 +836,262 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">
+      <i class="bi bi-chat-dots-fill" id="chatIcon"></i>
+    </button>
+        
+    <div class="chat-container" id="chatContainer">
+      <div class="chat-header">
+        <button class="chat-close" id="chatClose">×</button>
+          <h4>Chat dengan Asisten Cerdas</h4>
+      </div>
+            
+      <div class="chat-messages" id="chatMessages">
+        <div class="welcome-message">
+          <p>👋 Halo! Saya adalah asisten virtual untuk Inflation Monitoring dengan Food Security Index. Ada yang bisa saya bantu?</p>
+        </div>
+      </div>
+            
+      <div class="typing-indicator" id="typingIndicator">
+        <span>Sedang mengetik</span>
+          <div class="typing-dots">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+      </div>
+            
+      <div class="chat-input-container">
+        <textarea class="chat-input" id="chatInput" placeholder="Masukkan pertanyaan Anda di sini..." rows="1"></textarea>
+          <button class="chat-send" id="chatSend">
+            <span><i class="bi bi-send-fill"></i></span>
+          </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    class ChatWidget {
+      constructor() {
+        // GANTI URL INI DENGAN URL WEBHOOK N8N ANDA
+        this.webhookUrl = 'https://n8n-a6mdutghooxo.rendang.sumopod.my.id/webhook/chat';
+                  
+        this.isOpen = false;
+        this.sessionId = this.generateSessionId();
+        this.initializeElements();
+        this.attachEventListeners();
+        this.autoResizeTextarea();
+      }
+
+      generateSessionId() {
+        return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      }
+
+      initializeElements() {
+        this.chatToggle = document.getElementById('chatToggle');
+        this.chatContainer = document.getElementById('chatContainer');
+        this.chatClose = document.getElementById('chatClose');
+        this.chatMessages = document.getElementById('chatMessages');
+        this.chatInput = document.getElementById('chatInput');
+        this.chatSend = document.getElementById('chatSend');
+        this.chatIcon = document.getElementById('chatIcon');
+        this.typingIndicator = document.getElementById('typingIndicator');
+        this.chatInputContainer = this.chatInput.parentElement;
+      }
+
+      attachEventListeners() {
+        this.chatToggle.addEventListener('click', () => this.toggleChat());
+        this.chatClose.addEventListener('click', () => this.closeChat());
+        this.chatSend.addEventListener('click', () => this.sendMessage());
+                  
+        this.chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            this.sendMessage();
+          }
+        });
+
+        this.chatInput.addEventListener('input', () => {
+          this.adjustTextareaHeight();
+        });
+
+        // Close chat when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!this.chatToggle.contains(e.target) && 
+            !this.chatContainer.contains(e.target) && this.isOpen) {
+                // Uncomment if you want to close on outside click
+                // this.closeChat();
+              }
+          });
+      }
+
+      autoResizeTextarea() {
+        this.chatInput.style.height = 'auto';
+        this.chatInput.style.height = Math.min(this.chatInput.scrollHeight, 80) + 'px';
+      }
+
+      adjustTextareaHeight() {
+        // Reset height untuk mendapatkan scrollHeight yang akurat
+        this.chatInput.style.height = 'auto';
+                
+        // Hitung tinggi baru berdasarkan content
+        const scrollHeight = this.chatInput.scrollHeight;
+        const newHeight = Math.max(44, Math.min(scrollHeight, 120));
+                
+        // Set height baru untuk textarea
+        this.chatInput.style.height = newHeight + 'px';
+                
+        // Hitung dan set height untuk container
+        const containerPadding = 30; // 15px top + 15px bottom
+        const sendButtonHeight = 44;
+        const containerHeight = Math.max(newHeight, sendButtonHeight) + containerPadding;
+                
+        // Reset container style jika textarea kembali ke ukuran minimum
+        if (newHeight <= 44) {
+            this.chatInputContainer.style.height = 'auto';
+        } else {
+            this.chatInputContainer.style.height = containerHeight + 'px';
+        }
+                
+        // Handle overflow untuk textarea
+        if (newHeight >= 120) {
+          this.chatInput.style.overflowY = 'auto';
+        } else {
+          this.chatInput.style.overflowY = 'hidden';
+        }
+                
+        // Update chat messages height untuk mengkompensasi perubahan container
+        this.updateMessagesHeight();
+      }
+
+      updateMessagesHeight() {
+        // Delay sedikit untuk memastikan DOM sudah update
+        setTimeout(() => {
+          const containerHeight = this.chatContainer.offsetHeight;
+          const headerHeight = 80; // approximate header height
+          const inputContainerHeight = this.chatInputContainer.offsetHeight;
+          const messagesHeight = containerHeight - headerHeight - inputContainerHeight;
+                    
+          this.chatMessages.style.height = Math.max(messagesHeight, 200) + 'px';
+        }, 10);
+      }
+
+      toggleChat() {
+        if (this.isOpen) {
+          this.closeChat();
+        } else {
+          this.openChat();
+        }
+      }
+
+      openChat() {
+        this.isOpen = true;
+        this.chatContainer.classList.add('active');
+        this.chatToggle.classList.add('active');
+        this.chatIcon.className = 'bi bi-x-circle-fill';
+        this.chatInput.focus();
+      }
+
+      closeChat() {
+        this.isOpen = false;
+        this.chatContainer.classList.remove('active');
+        this.chatToggle.classList.remove('active');
+        this.chatIcon.className = 'bi bi-chat-dots-fill';
+      }
+
+      addMessage(content, isUser = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+                  
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.className = 'message-bubble';
+        bubbleDiv.textContent = content;
+                  
+        messageDiv.appendChild(bubbleDiv);
+        this.chatMessages.appendChild(messageDiv);
+        this.scrollToBottom();
+      }
+
+      showTyping() {
+        this.typingIndicator.classList.add('active');
+        this.scrollToBottom();
+      }
+
+      hideTyping() {
+        this.typingIndicator.classList.remove('active');
+      }
+
+      scrollToBottom() {
+        setTimeout(() => {
+          this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+        }, 100);
+      }
+
+      async sendMessage() {
+        const message = this.chatInput.value.trim();
+        if (!message) return;
+
+        // Add user message
+        this.addMessage(message, true);
+        this.chatInput.value = '';
+        this.adjustTextareaHeight();
+
+        // Disable send button
+        this.chatSend.disabled = true;
+        this.showTyping();
+
+        try {
+          // Prepare payload for n8n webhook
+          const payload = {
+            chatInput: message,
+            sessionId: this.sessionId,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            url: window.location.href
+          };
+
+          // Send to n8n webhook
+          const response = await fetch(this.webhookUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+                      
+            // Hide typing indicator
+            this.hideTyping();
+                      
+            // Add bot response
+            const botMessage = data.response || data.message || 'Maaf, saya mengalami kesulitan memproses pertanyaan Anda. Silakan coba lagi.';
+            this.addMessage(botMessage, false);
+
+        } catch (error) {
+            console.error('Error sending message:', error);
+            this.hideTyping();
+            this.addMessage('Maaf, terjadi kesalahan dalam menghubungi server. Silakan coba lagi nanti.', false);
+        } finally {
+          // Re-enable send button
+          this.chatSend.disabled = false;
+          this.chatInput.focus();
+        }
+      }
+    }
+
+    // Initialize chat widget when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new ChatWidget();
+    });
+  </script>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
