@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet.photon.css">
         <style>
         html, body, #map {
@@ -37,6 +38,7 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
+        <script src="js/leaflet-search.js"></script>
         <script src="data/Q42024_1.js"></script>
         <script src="data/Q32024_2.js"></script>
         <script src="data/Q22024_3.js"></script>
@@ -67,7 +69,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[1.074559314496938,97.16671007248596],[1.4311518805485233,97.75855835819118]]);
+        }).fitBounds([[1.0973430891480795,97.17518775607707],[1.4539356551996647,97.76703604178229]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -1733,7 +1735,7 @@
             }
         });
         var overlaysTree = [
-        {label: '<b>IKP</b>', collapsed: true, selectAllCheckbox: true, children: [
+        {label: '<b>IKP</b>',  selectAllCheckbox: true, children: [
             {label: 'Q1 2022<br /><table><tr><td style="text-align: center;"><img src="legend/Q12022_12_FoodInsecure0.png" /></td><td>Food Insecure</td></tr><tr><td style="text-align: center;"><img src="legend/Q12022_12_FoodSecure1.png" /></td><td>Food Secure</td></tr></table>', layer: layer_Q12022_12},
             {label: 'Q2 2022<br /><table><tr><td style="text-align: center;"><img src="legend/Q22022_11_FoodInsecure0.png" /></td><td>Food Insecure</td></tr><tr><td style="text-align: center;"><img src="legend/Q22022_11_FoodSecure1.png" /></td><td>Food Secure</td></tr></table>', layer: layer_Q22022_11},
             {label: 'Q3 2022<br /><table><tr><td style="text-align: center;"><img src="legend/Q32022_10_FoodInsecure0.png" /></td><td>Food Insecure</td></tr><tr><td style="text-align: center;"><img src="legend/Q32022_10_FoodSecure1.png" /></td><td>Food Secure</td></tr></table>', layer: layer_Q32022_10},
@@ -1758,6 +1760,16 @@
         });
         lay.addTo(map);
         setBounds();
+        map.addControl(new L.Control.Search({
+            layer: layer_Q42024_1,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'DESA'}));
+        if (typeof url === 'undefined') {
+            document.getElementsByClassName('search-button')[0].className += ' fa fa-binoculars';
+        } else {
+            document.getElementsByClassName('search-button')[1].className += ' fa fa-binoculars';
+        }
         </script>
     </body>
 </html>
