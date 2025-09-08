@@ -27,6 +27,9 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+
 </head>
 
 <body class="starter-page-page">
@@ -46,7 +49,7 @@
           <li><a href="index.html#data">Data</a></li>
           <li><a href="index.html#tahapan-penelitian">Tahapan Penelitian</a></li>
           <li><a href="index.html#hasil">Hasil</a></li>
-          <li><a href="index.html#dashboard">Dashboard</a></li>
+          <li><a href="index.html#dashboard" class="active">Dashboard</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -73,6 +76,213 @@
         </iframe>
       </div>
 
+      <!-- Charts Section -->
+      <div class="container mt-5" data-aos="fade-up">
+        <div class="row">
+          <!-- Left Chart -->
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <!-- Chart Title -->
+                <h5 class="card-title text-center mb-3">Indeks Harga Konsumen Bulanan</h5>
+                
+                <!-- Control Container -->
+                <div class="control-group">
+                  <!-- Left side - City Selection -->
+                  <div class="row mb-3">
+                    <div class="col-md-12">
+                      <label for="levelSelect" class="form-label mb-1" style="font-size: 0.9em; font-weight: 500;">Pilih Kota:</label>
+                      <select id="citySelect" class="form-select form-select-sm">
+                        <option value="medan">Medan</option>
+                        <option value="gunungsitoli">Gunungsitoli</option>
+                        <option value="padangsidimpuan">Padangsidimpuan</option>
+                        <option value="pematangsiantar">Pematangsiantar</option>
+                        <option value="sibolga">Sibolga</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label class="form-label mb-1" style="font-size: 0.9em; font-weight: 500;">Dari Bulan:</label>
+                      <select id="startDateSelect" class="form-select form-select-sm">
+                        <option value="2022-01">Jan 2022</option>
+                        <option value="2022-02">Feb 2022</option>
+                        <option value="2022-03">Mar 2022</option>
+                        <option value="2022-04">Apr 2022</option>
+                        <option value="2022-05">Mei 2022</option>
+                        <option value="2022-06">Jun 2022</option>
+                        <option value="2022-07">Jul 2022</option>
+                        <option value="2022-08">Ags 2022</option>
+                        <option value="2022-09">Sep 2022</option>
+                        <option value="2022-10">Okt 2022</option>
+                        <option value="2022-11">Nov 2022</option>
+                        <option value="2022-12">Des 2022</option>
+                        <option value="2023-01">Jan 2023</option>
+                        <option value="2023-02">Feb 2023</option>
+                        <option value="2023-03">Mar 2023</option>
+                        <option value="2023-04">Apr 2023</option>
+                        <option value="2023-05">Mei 2023</option>
+                        <option value="2023-06">Jun 2023</option>
+                        <option value="2023-07">Jul 2023</option>
+                        <option value="2023-08">Ags 2023</option>
+                        <option value="2023-09">Sep 2023</option>
+                        <option value="2023-10">Okt 2023</option>
+                        <option value="2023-11">Nov 2023</option>
+                        <option value="2023-12">Des 2023</option>
+                        <option value="2024-01">Jan 2024</option>
+                        <option value="2024-02">Feb 2024</option>
+                        <option value="2024-03">Mar 2024</option>
+                        <option value="2024-04">Apr 2024</option>
+                        <option value="2024-05">Mei 2024</option>
+                        <option value="2024-06">Jun 2024</option>
+                        <option value="2024-07">Jul 2024</option>
+                        <option value="2024-08">Ags 2024</option>
+                        <option value="2024-09">Sep 2024</option>
+                        <option value="2024-10">Okt 2024</option>
+                        <option value="2024-11">Nov 2024</option>
+                        <option value="2024-12">Des 2024</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label mb-1" style="font-size: 0.9em; font-weight: 500;">Ke Bulan:</label>
+                      <select id="endDateSelect" class="form-select form-select-sm">
+                        <option value="2022-01">Jan 2022</option>
+                        <option value="2022-02">Feb 2022</option>
+                        <option value="2022-03">Mar 2022</option>
+                        <option value="2022-04">Apr 2022</option>
+                        <option value="2022-05">Mei 2022</option>
+                        <option value="2022-06">Jun 2022</option>
+                        <option value="2022-07">Jul 2022</option>
+                        <option value="2022-08">Ags 2022</option>
+                        <option value="2022-09">Sep 2022</option>
+                        <option value="2022-10">Okt 2022</option>
+                        <option value="2022-11">Nov 2022</option>
+                        <option value="2022-12" selected>Des 2022</option>
+                        <option value="2023-01">Jan 2023</option>
+                        <option value="2023-02">Feb 2023</option>
+                        <option value="2023-03">Mar 2023</option>
+                        <option value="2023-04">Apr 2023</option>
+                        <option value="2023-05">Mei 2023</option>
+                        <option value="2023-06">Jun 2023</option>
+                        <option value="2023-07">Jul 2023</option>
+                        <option value="2023-08">Ags 2023</option>
+                        <option value="2023-09">Sep 2023</option>
+                        <option value="2023-10">Okt 2023</option>
+                        <option value="2023-11">Nov 2023</option>
+                        <option value="2023-12">Des 2023</option>
+                        <option value="2024-01">Jan 2024</option>
+                        <option value="2024-02">Feb 2024</option>
+                        <option value="2024-03">Mar 2024</option>
+                        <option value="2024-04">Apr 2024</option>
+                        <option value="2024-05">Mei 2024</option>
+                        <option value="2024-06">Jun 2024</option>
+                        <option value="2024-07">Jul 2024</option>
+                        <option value="2024-08">Ags 2024</option>
+                        <option value="2024-09">Sep 2024</option>
+                        <option value="2024-10">Okt 2024</option>
+                        <option value="2024-11">Nov 2024</option>
+                        <option value="2024-12">Des 2024</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <canvas id="inflationChart" width="400" height="300"></canvas>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Chart -->
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title text-center mb-3">Quarterly Food Security Index</h5>
+                
+                <!-- Food Security Controls -->
+                <div class="control-group">
+                  
+                  <!-- Level Selection -->
+                  <div class="row mb-3">
+                    <div class="col-md-12">
+                      <label for="levelSelect" class="form-label mb-1" style="font-size: 0.9em; font-weight: 500;">Lihat Berdasarkan:</label>
+                      <select id="levelSelect" class="form-select form-select-sm">
+                        <option value="kota">Kota</option>
+                        <option value="kecamatan">Kecamatan</option>
+                        <option value="desa">Top 5 Desa</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Conditional Dropdowns -->
+                  <div class="row mb-3">
+                    <!-- City Dropdown (for Kecamatan and Desa) -->
+                    <div class="col-md-12" id="citySelectContainer" style="display: none;">
+                      <label for="fsCitySelect" class="form-label mb-1" style="font-size: 0.9em; font-weight: 500;">Kota:</label>
+                      <select id="fsCitySelect" class="form-select form-select-sm">
+                        <option value="medan">Medan</option>
+                        <option value="gunungsitoli">Gunungsitoli</option>
+                        <option value="padangsidimpuan">Padangsidimpuan</option>
+                        <option value="pematangsiantar">Pematangsiantar</option>
+                        <option value="sibolga">Sibolga</option>
+                      </select>
+                    </div>
+                    
+                    <!-- District Dropdown (for Desa only) -->
+                    <div class="col-md-12" id="districtSelectContainer" style="display: none;">
+                      <label for="districtSelect" class="form-label mb-1" style="font-size: 0.9em; font-weight: 500;">Kecamatan:</label>
+                      <select id="districtSelect" class="form-select form-select-sm">
+                        <!-- Options will be populated dynamically -->
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Time Range Selection -->
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label class="form-label mb-1" style="font-size: 0.9em; font-weight: 500;">Dari Kuartal:</label>
+                      <select id="fsStartQuarterSelect" class="form-select form-select-sm">
+                        <option value="2022-Q1">Q1 2022</option>
+                        <option value="2022-Q2">Q2 2022</option>
+                        <option value="2022-Q3">Q3 2022</option>
+                        <option value="2022-Q4">Q4 2022</option>
+                        <option value="2023-Q1">Q1 2023</option>
+                        <option value="2023-Q2">Q2 2023</option>
+                        <option value="2023-Q3">Q3 2023</option>
+                        <option value="2023-Q4">Q4 2023</option>
+                        <option value="2024-Q1">Q1 2024</option>
+                        <option value="2024-Q2">Q2 2024</option>
+                        <option value="2024-Q3">Q3 2024</option>
+                        <option value="2024-Q4">Q4 2024</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label mb-1" style="font-size: 0.9em; font-weight: 500;">Ke Kuartal:</label>
+                      <select id="fsEndQuarterSelect" class="form-select form-select-sm">
+                        <option value="2022-Q1">Q1 2022</option>
+                        <option value="2022-Q2">Q2 2022</option>
+                        <option value="2022-Q3">Q3 2022</option>
+                        <option value="2022-Q4">Q4 2022</option>
+                        <option value="2023-Q1">Q1 2023</option>
+                        <option value="2023-Q2">Q2 2023</option>
+                        <option value="2023-Q3">Q3 2023</option>
+                        <option value="2023-Q4">Q4 2023</option>
+                        <option value="2024-Q1">Q1 2024</option>
+                        <option value="2024-Q2">Q2 2024</option>
+                        <option value="2024-Q3">Q3 2024</option>
+                        <option value="2024-Q4" selected>Q4 2024</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <canvas id="foodSecurityChart" width="400" height="300"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section><!-- /Starter Section Section -->
 
   </main>
@@ -90,6 +300,9 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Chart.js Initialization -->
+  <script src="assets/js/chartjs.js"></script>
 
 </body>
 
