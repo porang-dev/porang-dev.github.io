@@ -1125,7 +1125,7 @@ const chartConfig = {
         maintainAspectRatio: true,
         scales: {
             y: {
-                beginAtZero: true,
+                beginAtZero: false,
                 grid: {
                     color: 'rgba(0,0,0,0.1)'
                 }
