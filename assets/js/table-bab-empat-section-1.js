@@ -53,7 +53,7 @@ const data_transition = [
 ];
 
 // Fungsi untuk render tabel
-function renderTable(index) {
+function renderTableTransition(index) {
     const selectedDataTransition = data_transition[index];
     const tbody = document.getElementById('tableBody1');
       
@@ -85,8 +85,8 @@ function renderTable(index) {
 
 // Event listener untuk dropdown
 document.getElementById('kotaSelect1').addEventListener('change', function() {
-    renderTable(parseInt(this.value));
+    renderTableTransition(parseInt(this.value));
 });
 
 // Render tabel pertama kali
-renderTable(0);
+renderTableTransition(0);

@@ -63,7 +63,7 @@ const data_spells = [
     }
 ];
 
-function renderTable(index) {
+function renderTableSpells(index) {
     const selectedDataSpells = data_spells[index];
     const tbody = document.getElementById('tableBody2');
       
@@ -115,8 +115,8 @@ function renderTable(index) {
 }
 
 document.getElementById('kotaSelect2').addEventListener('change', function() {
-    renderTable(parseInt(this.value));
+    renderTableSpells(parseInt(this.value));
 });
 
 // Render tabel pertama kali
-renderTable(0);
+renderTableSpells(0);
