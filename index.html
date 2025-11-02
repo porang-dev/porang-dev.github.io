@@ -486,7 +486,7 @@
                   <i class="bi bi-caret-right-square-fill"></i>
                 </div>
                 <div class="tab-content">
-                  <h5>Pengaruh Indeks Kota Terhadap Inflasi</h5>
+                  <h5>Pengaruh QFSI Terhadap Inflasi</h5>
                 </div>
               </a>
             </li><!-- End tab nav item -->
@@ -751,32 +751,66 @@
                     <div class="row align-items-center">
                       <div class="col-lg-5">
                         <div class="content-wrapper">
-                          <h3>Dinamika Status sangat Rawan</h3>
-                          <p>Analisis perkembangan indeks ketahanan pangan kabupaten/kota periode 2020-2021 menunjukkan tren peningkatan di berbagai wilayah Indonesia.</p>
+                          <h3>Transition Matrix Q1 2O22 – Q4 2024</h3>
+                          <p>Nilai QFSI kota yang tinggi tidak menjamin semua desa serta penduduk di dalamnya juga tahan pangan. Untuk mengidentifikasi desa yang rawan pangan, dilakukan klasifikasi status QFSI desa menjadi food-insecure dan food-secure. Penelitian ini menggunakan nilai rata-rata indeks setiap triwulan sebagai cut-off pengklasifikasian.</p>
                           <div class="feature-grid">
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Peningkatan rata-rata QFSI sebesar 12% di wilayah Jawa</span>
+                              <span>Tidak semua desa yang tahan pangan pada Q1 2024 tetap seperti itu pada Q4 2024.</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Disparitas antar wilayah menurun hingga 8%</span>
+                              <span>Terjadi mobilitas stastus pangan desa, baik menuju rawan pangan atau sebaliknya.</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Top 10 kabupaten/kota dengan QFSI tertinggi</span>
+                              <span>Menggambarkan dinamika pergerakan status pangan.</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Identifikasi wilayah prioritas intervensi</span>
+                              <span>Pemerintah dapat mengidentifikasi desa yang rentan dan yang mudah kembali rawan pangan.</span>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-7">
                         <div class="visual-content">
-                          <div class="main-image">
-                            <img src="https://placehold.co/700x500/3498db/ffffff?text=QFSI+2020-2021" alt="QFSI 2020-2021" class="img-fluid">
+                          <div class="food-security-container">
+                            <div class="filter-section">
+                              <label class="filter-label">Pilih Kabupaten/Kota:</label>
+                              <select id="kotaSelect1" class="filter-select">
+                                <option value="0">Kota Gunungsitoli</option>
+                                <option value="1">Kota Padang Sidempuan</option>
+                                <option value="2">Kota Medan</option>
+                                <option value="3">Kota Pematangsiantar</option>
+                                <option value="4">Kota Sibolga</option>
+                              </select>
+                            </div>
+
+                            <div class="table-wrapper">
+                              <table class="data-table">
+                                <thead>
+                                  <tr>
+                                    <th rowspan="2">Kabupaten/kota</th>
+                                    <th rowspan="2">Q1-2022</th>
+                                    <th colspan="3">Q4-2024</th>
+                                  </tr>
+                                  <tr>
+                                    <th>Food-insecure %</th>
+                                    <th>Food-secure %</th>
+                                    <th>Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="tableBody1"></tbody>
+                              </table>
+                            </div>
+
+                            <div class="info-box">
+                              <p>
+                                <span class="label">Keterangan:</span> Tabel menampilkan dinamika status ketahanan pangan dari Q1-2022 ke Q4-2024. 
+                                Persentase menunjukkan transisi antara status food-insecure dan food-secure.
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -788,32 +822,66 @@
                     <div class="row align-items-center">
                       <div class="col-lg-5">
                         <div class="content-wrapper">
-                          <h3>Transisi Status Ketahanan Pangan</h3>
-                          <p>Periode 2022-2023 menunjukkan dinamika yang menarik dengan perubahan signifikan pada beberapa wilayah prioritas pembangunan.</p>
+                          <h3>Spells Analysis of QFSI Movement</h3>
+                          <p>Penelitian ini menggunakan metode spells untuk memperhitungkan durasi setiap desa mengalami kerawanan pangan. Desa yang tiga tahun berturut-turut (2022-2024) berada dalam kondisi tahan pangan diklasifikasikan sebagai consistently food-secure, sedangkan desa dengan tiga periode kerawanan pangan digolongkan sebagai chronically food-insecure. Sementara itu, desa yang mengalami setidaknya satu kali periode tahan pangan namun juga pernah masuk kondisi rawan pangan digolongkan sebagai transitorily food-insecure.</p>
                           <div class="feature-grid">
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Akselerasi pertumbuhan di wilayah Indonesia Timur</span>
+                              <span>Desa dengan chronically food-insecure memerlukan perhatian utama pemerintah.</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Stabilisasi QFSI di kota-kota besar</span>
+                              <span>Desa-desa tersebut menunjukkan kerentanan pangan dalam jangka yang lebih panjang.</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Pengaruh program intervensi pemerintah</span>
+                              <span>Jika berlangsung terus menerus dapat dikaitkan dengan kemiskinan struktural.</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Korelasi dengan program bantuan pangan</span>
+                              <span>Intervensi harus mencakup peningkatan pendidikan, lapangan kerja, dan akses layanan publik.</span>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-7">
-                        <div class="visual-content">
-                          <div class="main-image">
-                            <img src="https://placehold.co/700x500/2ecc71/ffffff?text=QFSI+2022-2023" alt="QFSI 2022-2023" class="img-fluid">
+                        <div class="transition-container">
+                          <div class="filter-section">
+                            <label class="filter-label">Pilih Kabupaten/Kota:</label>
+                            <select id="kotaSelect2" class="filter-select">
+                              <option value="0">Kota Gunungsitoli</option>
+                              <option value="1">Kota Padang Sidempuan</option>
+                              <option value="2">Kota Medan</option>
+                              <option value="3">Kota Pematangsiantar</option>
+                              <option value="4">Kota Sibolga</option>
+                            </select>
+                          </div>
+
+                          <div class="table-wrapper">
+                            <table class="transition-table">
+                              <thead>
+                                <tr>
+                                  <th>Kab/kota</th>
+                                  <th>Category</th>
+                                  <th>Movement<br>(2022→2023→2024)</th>
+                                  <th>Food<br>Secure<br>Spells</th>
+                                  <th>Food<br>Insecure<br>Spells</th>
+                                  <th>Frek</th>
+                                  <th>%</th>
+                                  <th>%<br>Kum</th>
+                                </tr>
+                              </thead>
+                              <tbody id="tableBody2">
+                                <!-- Data akan diisi oleh JavaScript -->
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <div class="info-box">
+                            <p>
+                              <span class="label">Keterangan:</span> Tabel menampilkan pola transisi status ketahanan pangan dari tahun 2022 hingga 2024. 
+                              FS = Food Secure, FI = Food Insecure. Persentase kumulatif menunjukkan distribusi kategori ketahanan pangan di setiap wilayah.
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -845,24 +913,24 @@
                     <div class="row align-items-center">
                       <div class="col-lg-5">
                         <div class="content-wrapper">
-                          <h3>Korelasi QFSI dan Inflasi Umum</h3>
-                          <p>Analisis perkembangan indeks ketahanan pangan kabupaten/kota periode 2020-2021 menunjukkan tren peningkatan di berbagai wilayah Indonesia.</p>
+                          <h3>Model Panel Dinamis</h3>
+                          <p>Inflasi yang mempengaruhi ketahanan pangan, juga dipengaruhi oleh ketahanan pangan pada periode sekarang maupun beberapa periode sebelumnya. Untuk mengetahui pengaruh ketahanan pangan periode berjalan dan periode sebelumnya terhadap inflasi, dilakukan analisis data panel dinamis dengan memasukan lag inflasi dan lag ketahanan pangan sebagai variabel independen dalam model.</p>
                           <div class="feature-grid">
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Peningkatan rata-rata QFSI sebesar 12% di wilayah Jawa</span>
+                              <span>Perilaku inflasi bersifat dinamis dan dipengaruhi oleh kondisi inflasi dan ketahanan pangan pada periode sebelumnya</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Disparitas antar wilayah menurun hingga 8%</span>
+                              <span>Inflasi dua periode sebelumnya memiliki pengaruh negatif yang signifikan.</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Top 10 kabupaten/kota dengan QFSI tertinggi</span>
+                              <span>Lonjakan inflasi yang terjadi dua periode sebelumnya akan menyesuaikan harga dan menekan inflasi diperiode berjalan.</span>
                             </div>
                             <div class="feature-item">
                               <i class="bi bi-check-circle-fill"></i>
-                              <span>Identifikasi wilayah prioritas intervensi</span>
+                              <span>Dinamika inflasi tidak bersifat linier, melainkan menunjukkan siklus korektif.</span>
                             </div>
                           </div>
                         </div>
@@ -870,44 +938,7 @@
                       <div class="col-lg-7">
                         <div class="visual-content">
                           <div class="main-image">
-                            <img src="https://placehold.co/700x500/3498db/ffffff?text=QFSI+2020-2021" alt="QFSI 2020-2021" class="img-fluid">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Slide 2 -->
-                  <div class="carousel-slide">
-                    <div class="row align-items-center">
-                      <div class="col-lg-5">
-                        <div class="content-wrapper">
-                          <h3>Pengaruh Regional dan Sektoral</h3>
-                          <p>Periode 2022-2023 menunjukkan dinamika yang menarik dengan perubahan signifikan pada beberapa wilayah prioritas pembangunan.</p>
-                          <div class="feature-grid">
-                            <div class="feature-item">
-                              <i class="bi bi-check-circle-fill"></i>
-                              <span>Akselerasi pertumbuhan di wilayah Indonesia Timur</span>
-                            </div>
-                            <div class="feature-item">
-                              <i class="bi bi-check-circle-fill"></i>
-                              <span>Stabilisasi QFSI di kota-kota besar</span>
-                            </div>
-                            <div class="feature-item">
-                              <i class="bi bi-check-circle-fill"></i>
-                              <span>Pengaruh program intervensi pemerintah</span>
-                            </div>
-                            <div class="feature-item">
-                              <i class="bi bi-check-circle-fill"></i>
-                              <span>Korelasi dengan program bantuan pangan</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-7">
-                        <div class="visual-content">
-                          <div class="main-image">
-                            <img src="https://placehold.co/700x500/2ecc71/ffffff?text=QFSI+2022-2023" alt="QFSI 2022-2023" class="img-fluid">
+                            <img src="assets\img\hasil-dan-pembahasan\formula-matematis.png" alt="Formula Matematis" class="img-fluid">
                           </div>
                         </div>
                       </div>
@@ -966,84 +997,13 @@
 
     </section><!-- /Dashboard Section -->
 
-    <!-- Keunggulan Inovasi Section -->
-    <section id="features-2" class="features-2 section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span class="description-title">Keunggulan Inovasi</span>
-        <h2>Keunggulan Inovasi</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-4">
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="bi bi-app-indicator"></i>
-              </div>
-              <h3>Keunggulan 1</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
-              <ul class="feature-benefits">
-                <li><i class="bi bi-check-circle-fill"></i> Real-time data visualization</li>
-                <li><i class="bi bi-check-circle-fill"></i> Customizable widgets</li>
-                <li><i class="bi bi-check-circle-fill"></i> Interactive reports</li>
-              </ul>
-              <div class="feature-image">
-                <img src="assets/img/features/features-1.webp" alt="Dashboard Interface" class="img-fluid" loading="lazy">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="feature-card highlighted">
-              <div class="feature-icon">
-                <i class="bi bi-graph-up-arrow"></i>
-              </div>
-              <h3>Keunggulan 2</h3>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus accusantium nam est velit suscipit aut eum deserunt corporis non laudantium esse magnam ratione magni tempore, nostrum omnis rerum consequatur dolorem.</p>
-              <ul class="feature-benefits">
-                <li><i class="bi bi-check-circle-fill"></i> Predictive analysis</li>
-                <li><i class="bi bi-check-circle-fill"></i> Custom reporting</li>
-                <li><i class="bi bi-check-circle-fill"></i> Data exploration</li>
-              </ul>
-              <div class="feature-image">
-                <img src="assets/img/features/features-2.webp" alt="Analytics Tools" class="img-fluid" loading="lazy">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="250">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="bi bi-shield-check"></i>
-              </div>
-              <h3>Keunggulan 3</h3>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis illo hic quo quibusdam esse aliquid nostrum itaque magnam, ratione ad neque error ullam, explicabo possimus temporibus voluptate laboriosam fuga in!</p>
-              <ul class="feature-benefits">
-                <li><i class="bi bi-check-circle-fill"></i> End-to-end encryption</li>
-                <li><i class="bi bi-check-circle-fill"></i> Advanced access control</li>
-                <li><i class="bi bi-check-circle-fill"></i> Compliance monitoring</li>
-              </ul>
-              <div class="feature-image">
-                <img src="assets/img/features/features-3.webp" alt="Security Features" class="img-fluid" loading="lazy">
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Keunggulan Inovasi Section -->
-
-    <!-- Potensi Pengembangan Section -->
+    <!-- Kesimpulan Section -->
     <section id="stats" class="stats section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span class="description-title">Potensi Pengembangan</span>
-        <h2>Potensi Pengembangan</h2>
+        <span class="description-title">Kesimpulan</span>
+        <h2>Kesimpulan</h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1053,12 +1013,12 @@
             <div class="col-xl-4 col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="100">
               <div class="stat-item">
                 <div class="stat-icon">
-                  <i class="bi bi-people-fill"></i>
+                  <i class="bi bi-arrows-move"></i>
                 </div>
                 <div class="stat-content">
-                  <div class="stat-label">Potensi Pengembangan 1</div>
+                  <div class="stat-label">Ketahanan Pangan Bersifat Dinamis</div>
                   <div class="stat-growth">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo facilis blanditiis repellat, fuga impedit deleniti ducimus saepe porro voluptate natus doloremque mollitia facere, quia optio quae laudantium minus labore ullam!
+                    Ketahanan pangan bersifat dinamis secara spasial-temporal sehingga perlu dimonitoring secara berkala dengan didukung oleh QFSI yang dapat memberikan gambaran terkait daerah yang rawan pangan atau beresiko menjadi rawan pangan secara cepat, granular, dan dinamis.
                   </div>
                 </div>
               </div>
@@ -1067,12 +1027,12 @@
             <div class="col-xl-4 col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="300">
               <div class="stat-item">
                 <div class="stat-icon">
-                  <i class="bi bi-award-fill"></i>
+                  <i class="bi bi-gear-wide-connected"></i>
                 </div>
                 <div class="stat-content">
-                  <div class="stat-label">Potensi Pengembangan 2</div>
+                  <div class="stat-label">Ketahanan Pangan Berpengaruh Terhadap Pengendalian Inflasi</div>
                   <div class="stat-growth">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae doloribus magnam repudiandae dolorem atque reprehenderit ex, laboriosam est adipisci non sapiente illo voluptate beatae hic modi dolores iure praesentium sed.
+                    Ketahanan pangan berpengaruh terhadap pengendalian inflasi melalui lag effect, sehingga kebijakan pengendalian inflasi terutama pada komoditas pangan strategis, perlu disinergikan dengan program penguatan ketahanan pangan.
                   </div>
                 </div>
               </div>
@@ -1081,12 +1041,12 @@
             <div class="col-xl-4 col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="400">
               <div class="stat-item">
                 <div class="stat-icon">
-                  <i class="bi bi-globe"></i>
+                  <i class="bi bi-chevron-double-right"></i>
                 </div>
                 <div class="stat-content">
-                  <div class="stat-label">Potensi Pengembangan 3</div>
+                  <div class="stat-label">Pengembangan Selanjutnya</div>
                   <div class="stat-growth">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem velit perferendis quibusdam aliquam natus pariatur necessitatibus repellat illo magni eum officiis, praesentium obcaecati quisquam vero animi dolore molestiae modi dolorem.
+                    Pegembangan selanjutnya dari penelitian ini adalah melanjutkan pembangunan QFSI untuk seluruh kota inflasi di Indonesia serta menambahkan indikator atau informasi lainnya yang belum tercakup dalam penelitian ini.
                   </div>
                 </div>
               </div>
@@ -1096,7 +1056,7 @@
 
       </div>
 
-    </section><!-- /Potensi Pengembangan Section -->
+    </section><!-- /Kesimpulan Section -->
 
     <!-- Modal untuk menampilkan gambar penuh -->
     <div class="modal fade" id="imageModalCLD" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -1153,7 +1113,7 @@
             
       <div class="chat-messages" id="chatMessages">
         <div class="welcome-message">
-          <p>👋 Halo! Saya adalah asisten virtual untuk Inflation Monitoring dengan Food Security Index. Ada yang bisa saya bantu?</p>
+          <p>👋 Halo! Saya adalah asisten virtual untuk Inflation Monitoring dengan Quarterly Food Security Index. Ada yang bisa saya bantu?</p>
         </div>
       </div>
             
@@ -1564,7 +1524,7 @@
     const carouselStates = {
         tab1: { currentIndex: 0, totalSlides: 2 },
         tab2: { currentIndex: 0, totalSlides: 2 },
-        tab3: { currentIndex: 0, totalSlides: 2 }
+        tab3: { currentIndex: 0, totalSlides: 1 }
     };
 
     function initCarousels() {
@@ -1655,6 +1615,10 @@
   <!-- Chart.js Initialization -->
   <script src="assets/js/chart-bab-empat-section-1.js"></script>
   <script src="assets/js/chart-bab-empat-section-2.js"></script>
+
+  <!-- Table Initialization -->
+  <script src="assets/js/table-bab-empat-section-1.js"></script>
+  <script src="assets/js/table-bab-empat-section-2.js"></script>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

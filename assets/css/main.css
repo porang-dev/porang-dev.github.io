@@ -4647,6 +4647,252 @@ section,
     gap: 15px;
   }
 }
+
+.food-security-container {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section {
+  margin-bottom: 1.5rem;
+}
+
+.filter-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #33D5D2;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent-color);;
+}
+
+.filter-select:hover {
+  border-color: #1ABBB8;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.data-table thead tr:first-child th {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 600;
+}
+
+.data-table thead tr:last-child th {
+  background-color: #1ABBB8;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.data-table th {
+  text-align: center;
+}
+
+.row-insecure {
+  background-color: #fee2e2;
+  transition: background-color 0.2s;
+}
+
+.row-insecure:hover {
+  background-color: #fecaca;
+}
+
+.row-secure {
+  background-color: #dcfce7;
+  transition: background-color 0.2s;
+}
+
+.row-secure:hover {
+  background-color: #bbf7d0;
+}
+
+.row-total {
+  background-color: #dbeafe;
+  transition: background-color 0.2s;
+}
+
+.row-total:hover {
+  background-color: #bfdbfe;
+}
+
+.cell-kota {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.cell-insecure {
+  font-weight: 500;
+  color: #b91c1c;
+}
+
+.cell-secure {
+  font-weight: 500;
+  color: #15803d;
+}
+
+.cell-total {
+  font-weight: 700;
+  color: #1e40af;
+}
+
+.cell-center {
+  text-align: center;
+  font-weight: 600;
+}
+
+.value-insecure {
+  color: #dc2626;
+}
+
+.value-secure {
+  color: #16a34a;
+}
+
+.value-neutral {
+  color: #1f2937;
+}
+
+.info-box {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: #eff6ff;
+  border-left: 4px solid var(--accent-color);;
+  border-radius: 0.5rem;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.info-box .label {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .food-security-container {
+    padding: 1rem;
+  }
+
+  .data-table th, .data-table td {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+.transition-container {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.transition-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.transition-table th, .transition-table td {
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+}
+
+.transition-table thead th {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 600;
+  font-size: 0.813rem;
+}
+
+.transition-table td:first-child, .transition-table td:nth-child(2) {
+  text-align: left;
+}
+
+.category-consistent {
+  background-color: #d1fae5;
+  font-weight: 600;
+}
+
+.category-chronically {
+  background-color: #fecaca;
+  font-weight: 600;
+}
+
+.category-transitorily {
+  background-color: #fed7aa;
+  font-weight: 600;
+}
+
+.movement-cell {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.kota-name {
+  font-weight: 700;
+  color: #1f2937;
+  background-color: #f3f4f6;
+}
+
+.value-highlight {
+  font-weight: 600;
+  color: #059669;
+}
+
+@media (max-width: 768px) {
+  .transition-container {
+    padding: 1rem;
+  }
+
+  .transition-table {
+    font-size: 0.75rem;
+  }
+
+  .transition-table th, .transition-table td {
+    padding: 0.375rem 0.5rem;
+  }
+}
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
