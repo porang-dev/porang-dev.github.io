@@ -27,6 +27,9 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+
   <!-- =======================================================
   * Template Name: Landify
   * Template URL: https://bootstrapmade.com/landify-bootstrap-landing-page-template/
@@ -127,20 +130,20 @@
 
               <div class="stats-grid">
                 <div class="stat-item">
-                  <div class="stat-number">250</div>
-                  <div class="stat-label">Nanti diisi data kuantitatif dari pendahuluan (jika ada)</div>
+                  <div class="stat-number">Bappenas, 2025</div>
+                  <div class="stat-label">Percepatan pertumbuhan ekonomi sangat bergantung pada stabilitas harga dan ketahanan pangan</div>
                 </div>
                 <div class="stat-item">
-                  <div class="stat-number">250</div>
-                  <div class="stat-label">Nanti diisi data kuantitatif dari pendahuluan (jika ada)</div>
+                  <div class="stat-number">Nuryantono, 2021</div>
+                  <div class="stat-label">Ketahanan pangan menjadi instrumen utama dalam meredam tekanan inflasi</div>
                 </div>
                 <div class="stat-item">
-                  <div class="stat-number">250</div>
-                  <div class="stat-label">Nanti diisi data kuantitatif dari pendahuluan (jika ada)</div>
+                  <div class="stat-number">Adem, 2023</div>
+                  <div class="stat-label">Ketahanan pangan dapat berubah dalam waktu singkat dan berbeda antar wilayah</div>
                 </div>
                 <div class="stat-item">
-                  <div class="stat-number">250</div>
-                  <div class="stat-label">Nanti diisi data kuantitatif dari pendahuluan (jika ada)</div>
+                  <div class="stat-number">Dhaarna & Devadas, 2022</div>
+                  <div class="stat-label">Sistem ketahanan pangan dipengaruhi oleh banyak sektor atau aspek</div>
                 </div>
               </div>
             </div>
@@ -172,7 +175,7 @@
     </section><!-- /Pendahuluan Section -->
 
     <!-- Data Section -->
-    <section id="data" class="services section">
+    <section id="data" class="services section">  
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -220,7 +223,7 @@
                   <h5 class="service-title">
                     Nighttime Light (NTL)
                   </h5>
-                  <p class="service-description">Data NTL digunakan untuk merepresentasikan aksesibilitas ekonomi melalui intensitas cahaya malam, yang secara empiris berkorelasi dengan tingkat aktivitas ekonomi, kepadatan penduduk, serta distribusi infrastruktur perkotaan</p>
+                  <p class="service-description faq-content">Data NTL digunakan untuk merepresentasikan aksesibilitas ekonomi melalui intensitas cahaya malam, yang secara empiris berkorelasi dengan tingkat aktivitas ekonomi, kepadatan penduduk, serta distribusi infrastruktur perkotaan</p>
                 </div>
               </div>
             </div><!-- End Service Card -->
@@ -389,7 +392,7 @@
             <div class="col-lg-6" data-aos="zoom-in">
               <div class="testimonial-image">
                 <div class="image-hover-container" data-bs-toggle="modal" data-bs-target="#tahapanModal">
-                  <img src="assets/img/tahapan_penelitian/tahapan_penelitian.png" alt="Tahapan Penelitian" class="img-fluid">
+                  <img src="assets/img/tahapan_penelitian/tahapan-penelitian-sumatranomics.png" alt="Tahapan Penelitian" class="img-fluid">
                   <div class="image-hover-overlay">
                     <button class="view-btn" type="button">
                       <i class="bi bi-zoom-in"></i>
@@ -422,7 +425,15 @@
                   <i class="bi bi-check-circle-fill"></i>
                 </div>
                 <h5 class="service-title">
-                  Analisis Autoregressive Distributed Lag (ARDL)
+                  Analisis Deskriptif, Causal Loop Diagram, Transisi Matriks, dan Spells
+                </h5>
+              </div>
+              <div class="testimonial-content">
+                <div class="check-icon">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <h5 class="service-title">
+                  Sisitem Monitoring (Dashboard dan Smart Chatbot)
                 </h5>
               </div>
             </div>
@@ -485,127 +496,434 @@
           <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
             <div class="tab-pane fade active show" id="features-tab-1">
-              <div class="row align-items-center">
+              <div class="carousel-container">
+                <div class="carousel-nav prev">
+                  <button onclick="navigateCarousel('tab1', -1)">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                </div>
 
-                <div class="col-lg-5">
-                  <div class="content-wrapper">
-                    <h3>Perkembangan QFSI Kabupaten/Kota</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit nemo iure neque quas velit animi dolorum nostrum quam cum porro sunt sed minus deserunt et obcaecati, iste at laboriosam. Maxime.</p>
-
-                    <div class="feature-grid">
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit</span>
+                <div class="carousel-wrapper" id="carousel-tab1">
+                  <!-- Slide 1 -->
+                  <div class="carousel-slide active">
+                    <div class="row align-items-center">
+                      <div class="col-lg-5">
+                        <div class="content-wrapper">
+                          <h3>Perkembangan QFSI Kota Q1 2022 - Q4 2024</h3>
+                          <p>Ketahanan pangan di lima kota inflasi Provinsi Sumatera Utara cenderung menunjukkan pola fluktuatif dari satu periode ke periode berikutnya. Hal ini menunjukkan ketahanan pangan merupakan fenomena dan ukuran kesejahteraan yang dinamis.</p>
+                          <div class="feature-grid">
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>QFSI di Medan dan Pematang Siantar tergolong stabil.</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>QFSI Gunungsitoli dan Padang Sidempuan cenderung fluktuatif.</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Kota-kota dengan fluktuasi tinggi memerlukan penanganan khusus.</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Kebijakan pangan perlu disesuaikan dengan karakteristik setiap wilayah.</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit</span>
-                      </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit</span>
-                      </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit</span>
+                      <div class="col-lg-7">
+                        <div class="visual-content">
+                          <div class="chart-container">
+                            <!-- Filter Controls -->
+                            <div class="chart-filters mb-3">
+                              <div class="row align-items-center">
+                                <div class="col-md-5">
+                                  <label for="startQuarter" class="form-label">Dari:</label>
+                                  <select id="startQuarter" class="form-select form-select-sm">
+                                    <option value="0">Q1 2022</option>
+                                    <option value="1">Q2 2022</option>
+                                    <option value="2">Q3 2022</option>
+                                    <option value="3">Q4 2022</option>
+                                    <option value="4">Q1 2023</option>
+                                    <option value="5">Q2 2023</option>
+                                    <option value="6">Q3 2023</option>
+                                    <option value="7">Q4 2023</option>
+                                    <option value="8">Q1 2024</option>
+                                    <option value="9">Q2 2024</option>
+                                    <option value="10">Q3 2024</option>
+                                    <option value="11">Q4 2024</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-5">
+                                  <label for="endQuarter" class="form-label">Sampai:</label>
+                                  <select id="endQuarter" class="form-select form-select-sm">
+                                    <option value="0">Q1 2022</option>
+                                    <option value="1">Q2 2022</option>
+                                    <option value="2">Q3 2022</option>
+                                    <option value="3">Q4 2022</option>
+                                    <option value="4">Q1 2023</option>
+                                    <option value="5">Q2 2023</option>
+                                    <option value="6">Q3 2023</option>
+                                    <option value="7">Q4 2023</option>
+                                    <option value="8">Q1 2024</option>
+                                    <option value="9">Q2 2024</option>
+                                    <option value="10">Q3 2024</option>
+                                    <option value="11" selected>Q4 2024</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-2">
+                                  <label class="form-label d-none d-md-block">&nbsp;</label>
+                                  <button id="resetFilter" class="btn btn-secondary btn-sm w-100">Reset</button>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <!-- Canvas Chart -->
+                            <div class="chart-wrapper">
+                              <canvas id="qfsiChart"></canvas>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                  </div>
 
+                  <!-- Slide 2 -->
+                  <div class="carousel-slide">
+                    <div class="row align-items-center">
+                      <div class="col-lg-5">
+                        <div class="content-wrapper">
+                          <h3>Perkembangan QFSI 2022-2023</h3>
+                          <p>Selain bersifat dinamis dan kontekstual, ketahanan pangan juga bersifat multidimensi. Sehingga dalam membuat kebijakan yang efektif, perlu dipahami pilar-pilar yang menjadi kelemahan masing-masing kota</p>
+                          <div class="feature-grid">
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Suatu kota bisa rawan pangan pada pilar tertentu saja.</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Misalnya, Kota Medan menempati posisi tertinggi dalam pilar akses pangan.</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Namun, Kota Medan memiliki skor terendah pada ketersediaan dan kestabilan pangan.</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Sehingga, kebijakan pangan Medan sebaiknya fokus pada lingkungan dan cadangan pangan.</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-7">
+                        <div class="visual-content">
+                          <div class="multi-chart-container">
+                            <!-- Filter Controls -->
+                            <div class="chart-filters mb-3">
+                              <div class="row align-items-center">
+                                <div class="col-md-5">
+                                  <label for="startQuarterPillar" class="form-label">Dari:</label>
+                                  <select id="startQuarterPillar" class="form-select form-select-sm">
+                                    <option value="0">Q1 2022</option>
+                                    <option value="1">Q2 2022</option>
+                                    <option value="2">Q3 2022</option>
+                                    <option value="3">Q4 2022</option>
+                                    <option value="4">Q1 2023</option>
+                                    <option value="5">Q2 2023</option>
+                                    <option value="6">Q3 2023</option>
+                                    <option value="7">Q4 2023</option>
+                                    <option value="8">Q1 2024</option>
+                                    <option value="9">Q2 2024</option>
+                                    <option value="10">Q3 2024</option>
+                                    <option value="11">Q4 2024</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-5">
+                                  <label for="endQuarterPillar" class="form-label">Sampai:</label>
+                                  <select id="endQuarterPillar" class="form-select form-select-sm">
+                                    <option value="0">Q1 2022</option>
+                                    <option value="1">Q2 2022</option>
+                                    <option value="2">Q3 2022</option>
+                                    <option value="3">Q4 2022</option>
+                                    <option value="4">Q1 2023</option>
+                                    <option value="5">Q2 2023</option>
+                                    <option value="6">Q3 2023</option>
+                                    <option value="7">Q4 2023</option>
+                                    <option value="8">Q1 2024</option>
+                                    <option value="9">Q2 2024</option>
+                                    <option value="10">Q3 2024</option>
+                                    <option value="11" selected>Q4 2024</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-2">
+                                  <label class="form-label d-none d-md-block">&nbsp;</label>
+                                  <button id="resetFilterPillar" class="btn btn-secondary btn-sm w-100">Reset</button>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Charts Grid -->
+                            <div class="charts-grid">
+                              <!-- Accessibility Chart -->
+                              <div class="chart-box">
+                                <h5 class="chart-title">Accessibility</h5>
+                                <div class="chart-wrapper-small">
+                                  <canvas id="accessibilityChart"></canvas>
+                                </div>
+                              </div>
+
+                              <!-- Availability Chart -->
+                              <div class="chart-box">
+                                <h5 class="chart-title">Availability</h5>
+                                <div class="chart-wrapper-small">
+                                  <canvas id="availabilityChart"></canvas>
+                                </div>
+                              </div>
+
+                              <!-- Utilization Chart -->
+                              <div class="chart-box">
+                                <h5 class="chart-title">Utilization</h5>
+                                <div class="chart-wrapper-small">
+                                  <canvas id="utilizationChart"></canvas>
+                                </div>
+                              </div>
+
+                              <!-- Stability Chart -->
+                              <div class="chart-box">
+                                <h5 class="chart-title">Stability</h5>
+                                <div class="chart-wrapper-small">
+                                  <canvas id="stabilityChart"></canvas>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Shared Legend -->
+                            <div class="shared-legend">
+                              <div class="legend-item" data-city="0" onclick="toggleCity(0)">
+                                <span class="legend-circle" style="border-color: #3dccc7; background-color: rgba(61, 204, 199, 0.4);"></span>
+                                <span class="legend-label">Medan</span>
+                              </div>
+                              <div class="legend-item" data-city="1" onclick="toggleCity(1)">
+                                <span class="legend-circle" style="border-color: #2fbead; background-color: rgba(47, 190, 173, 0.4);"></span>
+                                <span class="legend-label">Pematang Siantar</span>
+                              </div>
+                              <div class="legend-item" data-city="2" onclick="toggleCity(2)">
+                                <span class="legend-circle" style="border-color: #007279; background-color: rgba(0, 114, 121, 0.4);"></span>
+                                <span class="legend-label">Sibolga</span>
+                              </div>
+                              <div class="legend-item" data-city="3" onclick="toggleCity(3)">
+                                <span class="legend-circle" style="border-color: #cca30d; background-color: rgba(204, 163, 13, 0.4);"></span>
+                                <span class="legend-label">Padang Sidimpuan</span>
+                              </div>
+                              <div class="legend-item" data-city="4" onclick="toggleCity(4)">
+                                <span class="legend-circle" style="border-color: #ffeb9c; background-color: rgba(255, 235, 156, 0.4);"></span>
+                                <span class="legend-label">Gunungsitoli</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="col-lg-7">
-                  <div class="visual-content">
-                    <div class="main-image">
-                      <img src="assets/img/features/features-4.webp" alt="" class="img-fluid">
-                    </div>
-                  </div>
+                <div class="carousel-nav next">
+                  <button onclick="navigateCarousel('tab1', 1)">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
                 </div>
-
               </div>
-            </div><!-- End tab content item -->
+
+              <div class="carousel-indicators" id="indicators-tab1"></div>
+            </div>
 
             <div class="tab-pane fade" id="features-tab-2">
-              <div class="row align-items-center">
+              <div class="carousel-container">
+                <div class="carousel-nav prev">
+                  <button onclick="navigateCarousel('tab2', -1)">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                </div>
 
-                <div class="col-lg-5">
-                  <div class="content-wrapper">
-                    <h3>Dinamika Status QFSI Indonesia</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur id tempora ut beatae expedita iusto odio, sed alias eaque autem voluptatibus officia maxime possimus et ipsam, perspiciatis maiores ducimus vel.</p>
-
-                    <div class="feature-grid">
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+                <div class="carousel-wrapper" id="carousel-tab2">
+                  <!-- Slide 1 -->
+                  <div class="carousel-slide active">
+                    <div class="row align-items-center">
+                      <div class="col-lg-5">
+                        <div class="content-wrapper">
+                          <h3>Dinamika Status sangat Rawan</h3>
+                          <p>Analisis perkembangan indeks ketahanan pangan kabupaten/kota periode 2020-2021 menunjukkan tren peningkatan di berbagai wilayah Indonesia.</p>
+                          <div class="feature-grid">
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Peningkatan rata-rata QFSI sebesar 12% di wilayah Jawa</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Disparitas antar wilayah menurun hingga 8%</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Top 10 kabupaten/kota dengan QFSI tertinggi</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Identifikasi wilayah prioritas intervensi</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
-                      </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
-                      </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+                      <div class="col-lg-7">
+                        <div class="visual-content">
+                          <div class="main-image">
+                            <img src="https://placehold.co/700x500/3498db/ffffff?text=QFSI+2020-2021" alt="QFSI 2020-2021" class="img-fluid">
+                          </div>
+                        </div>
                       </div>
                     </div>
+                  </div>
 
+                  <!-- Slide 2 -->
+                  <div class="carousel-slide">
+                    <div class="row align-items-center">
+                      <div class="col-lg-5">
+                        <div class="content-wrapper">
+                          <h3>Transisi Status Ketahanan Pangan</h3>
+                          <p>Periode 2022-2023 menunjukkan dinamika yang menarik dengan perubahan signifikan pada beberapa wilayah prioritas pembangunan.</p>
+                          <div class="feature-grid">
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Akselerasi pertumbuhan di wilayah Indonesia Timur</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Stabilisasi QFSI di kota-kota besar</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Pengaruh program intervensi pemerintah</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Korelasi dengan program bantuan pangan</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-7">
+                        <div class="visual-content">
+                          <div class="main-image">
+                            <img src="https://placehold.co/700x500/2ecc71/ffffff?text=QFSI+2022-2023" alt="QFSI 2022-2023" class="img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="col-lg-7">
-                  <div class="visual-content">
-                    <div class="main-image">
-                      <img src="assets/img/features/features-2.webp" alt="" class="img-fluid">
-                    </div>
-                  </div>
+                <div class="carousel-nav next">
+                  <button onclick="navigateCarousel('tab2', 1)">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
                 </div>
-
               </div>
-            </div><!-- End tab content item -->
+
+              <div class="carousel-indicators" id="indicators-tab2"></div>
+            </div>
 
             <div class="tab-pane fade" id="features-tab-3">
-              <div class="row align-items-center">
+              <div class="carousel-container">
+                <div class="carousel-nav prev">
+                  <button onclick="navigateCarousel('tab3', -1)">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                </div>
 
-                <div class="col-lg-5">
-                  <div class="content-wrapper">
-                    <h3>Pengaruh Indeks Kota Terhadap Inflasi</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere praesentium soluta est omnis, architecto qui sed nemo repudiandae quas voluptates. Error quo non qui ab. Maxime fugit ipsa illum facere.</p>
-
-                    <div class="feature-grid">
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+                <div class="carousel-wrapper" id="carousel-tab3">
+                  <!-- Slide 1 -->
+                  <div class="carousel-slide active">
+                    <div class="row align-items-center">
+                      <div class="col-lg-5">
+                        <div class="content-wrapper">
+                          <h3>Korelasi QFSI dan Inflasi Umum</h3>
+                          <p>Analisis perkembangan indeks ketahanan pangan kabupaten/kota periode 2020-2021 menunjukkan tren peningkatan di berbagai wilayah Indonesia.</p>
+                          <div class="feature-grid">
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Peningkatan rata-rata QFSI sebesar 12% di wilayah Jawa</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Disparitas antar wilayah menurun hingga 8%</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Top 10 kabupaten/kota dengan QFSI tertinggi</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Identifikasi wilayah prioritas intervensi</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
-                      </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
-                      </div>
-                      <div class="feature-item">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+                      <div class="col-lg-7">
+                        <div class="visual-content">
+                          <div class="main-image">
+                            <img src="https://placehold.co/700x500/3498db/ffffff?text=QFSI+2020-2021" alt="QFSI 2020-2021" class="img-fluid">
+                          </div>
+                        </div>
                       </div>
                     </div>
+                  </div>
 
+                  <!-- Slide 2 -->
+                  <div class="carousel-slide">
+                    <div class="row align-items-center">
+                      <div class="col-lg-5">
+                        <div class="content-wrapper">
+                          <h3>Pengaruh Regional dan Sektoral</h3>
+                          <p>Periode 2022-2023 menunjukkan dinamika yang menarik dengan perubahan signifikan pada beberapa wilayah prioritas pembangunan.</p>
+                          <div class="feature-grid">
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Akselerasi pertumbuhan di wilayah Indonesia Timur</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Stabilisasi QFSI di kota-kota besar</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Pengaruh program intervensi pemerintah</span>
+                            </div>
+                            <div class="feature-item">
+                              <i class="bi bi-check-circle-fill"></i>
+                              <span>Korelasi dengan program bantuan pangan</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-7">
+                        <div class="visual-content">
+                          <div class="main-image">
+                            <img src="https://placehold.co/700x500/2ecc71/ffffff?text=QFSI+2022-2023" alt="QFSI 2022-2023" class="img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="col-lg-7">
-                  <div class="visual-content">
-                    <div class="main-image">
-                      <img src="assets/img/features/features-6.webp" alt="" class="img-fluid">
-                    </div>
-                  </div>
+                <div class="carousel-nav next">
+                  <button onclick="navigateCarousel('tab3', 1)">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
                 </div>
-
               </div>
-            </div><!-- End tab content item -->
+
+              <div class="carousel-indicators" id="indicators-tab3"></div>
+            </div>
 
           </div>
         </div>
@@ -810,7 +1128,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <img src="assets/img/tahapan_penelitian/tahapan_penelitian.png" alt="Tahapan Penelitian Full Size" class="modal-image">
+            <img src="assets/img/tahapan_penelitian/tahapan-penelitian-sumatranomics.png" alt="Tahapan Penelitian Full Size" class="modal-image">
           </div>
         </div>
       </div>
@@ -860,8 +1178,8 @@
   <script>
     class ChatWidget {
       constructor() {
-        // GANTI URL INI DENGAN URL WEBHOOK N8N ANDA
-        this.webhookUrl = 'https://n8n-a6mdutghooxo.rendang.sumopod.my.id/webhook/chat';
+        // URL WEBHOOK N8N
+        this.webhookUrl = 'https://n8n-syvfpi8xe185.rendang.sumopod.my.id/webhook/chat';
                   
         this.isOpen = false;
         this.sessionId = this.generateSessionId();
@@ -1243,11 +1561,100 @@
       }
     }
 
+    const carouselStates = {
+        tab1: { currentIndex: 0, totalSlides: 2 },
+        tab2: { currentIndex: 0, totalSlides: 2 },
+        tab3: { currentIndex: 0, totalSlides: 2 }
+    };
+
+    function initCarousels() {
+        Object.keys(carouselStates).forEach(tabId => {
+            updateCarousel(tabId);
+            createIndicators(tabId);
+        });
+    }
+
+    function navigateCarousel(tabId, direction) {
+        const state = carouselStates[tabId];
+        const newIndex = state.currentIndex + direction;
+
+        if (newIndex >= 0 && newIndex < state.totalSlides) {
+            state.currentIndex = newIndex;
+            updateCarousel(tabId);
+        }
+    }
+
+    function updateCarousel(tabId) {
+        const carousel = document.getElementById(`carousel-${tabId}`);
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const state = carouselStates[tabId];
+
+        // Update slides
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === state.currentIndex);
+        });
+
+        // Update navigation buttons
+        const container = carousel.closest('.carousel-container');
+        const prevBtn = container.querySelector('.prev button');
+        const nextBtn = container.querySelector('.next button');
+
+        prevBtn.disabled = state.currentIndex === 0;
+        nextBtn.disabled = state.currentIndex === state.totalSlides - 1;
+
+        // Update indicators
+        updateIndicators(tabId);
+    }
+
+    function createIndicators(tabId) {
+        const indicatorsContainer = document.getElementById(`indicators-${tabId}`);
+        const state = carouselStates[tabId];
+
+        indicatorsContainer.innerHTML = '';
+
+        for (let i = 0; i < state.totalSlides; i++) {
+            const indicator = document.createElement('button');
+            indicator.onclick = () => {
+                state.currentIndex = i;
+                updateCarousel(tabId);
+            };
+            indicatorsContainer.appendChild(indicator);
+        }
+    }
+
+    function updateIndicators(tabId) {
+        const indicatorsContainer = document.getElementById(`indicators-${tabId}`);
+        const indicators = indicatorsContainer.querySelectorAll('button');
+        const state = carouselStates[tabId];
+
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === state.currentIndex);
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        const activeTab = document.querySelector('.tab-pane.active');
+        if (!activeTab) return;
+
+        const tabId = activeTab.id.replace('features-', '');
+
+        if (e.key === 'ArrowLeft') {
+            navigateCarousel(tabId, -1);
+        } else if (e.key === 'ArrowRight') {
+            navigateCarousel(tabId, 1);
+        }
+    });
+
     // Initialize chat widget when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
       new ChatWidget();
+      initCarousels();
     });
   </script>
+
+  <!-- Chart.js Initialization -->
+  <script src="assets/js/chart-bab-empat-section-1.js"></script>
+  <script src="assets/js/chart-bab-empat-section-2.js"></script>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
